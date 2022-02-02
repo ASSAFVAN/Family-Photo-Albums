@@ -10,9 +10,9 @@ const {
   getAllUsers,
 } = require("../controllers/userControllers");
 
-router.post("/users/signUp", signUp);
+router.post("/users/signup", signUp);
+router.post("/users/signin", signIn);
 router.get("/users", getAllUsers);
-router.post("/users/signIn", signIn);
 router.post("/users/logout", auth, logout);
 router.get("/users/:id", getUser);
 
