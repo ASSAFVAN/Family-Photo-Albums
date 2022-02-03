@@ -5,15 +5,15 @@ const auth = require("../middlewares/auth");
 const {
   signUp,
   signIn,
-  logout,
+  signOut,
   getUser,
   getAllUsers,
 } = require("../controllers/userControllers");
 
 router.post("/users/signup", signUp);
 router.post("/users/signin", signIn);
+router.post("/users/signout", auth, signOut);
 router.get("/users", getAllUsers);
-router.post("/users/logout", auth, logout);
 router.get("/users/:id", getUser);
 
 module.exports = router;
