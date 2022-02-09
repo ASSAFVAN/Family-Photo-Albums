@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./header.css";
+import "./style.css";
 
 export default function Header() {
   const token = localStorage.getItem("token");
