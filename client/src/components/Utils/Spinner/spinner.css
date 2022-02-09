@@ -1,13 +1,14 @@
 :root {
-  --primary-color: rgb(12, 225, 199);
+  --primary-color: #f08080;
 }
 
 .spinner {
-  height: 100px;
-  width: 100px;
+  height: 5vh;
+  width: 5vw;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  margin-top: 4vh;
 }
 .circle {
   background-color: var(--primary-color);
