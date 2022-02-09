@@ -1,0 +1,13 @@
+.showimage-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 100%; */
+}
+
+.showimage-img {
+  margin-top: 10vh;
+  height: 60%;
+  width: 60%;
+}
