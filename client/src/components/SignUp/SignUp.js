@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import myApi from "../../API/Api";
 import Spinner from "../Utils/Spinner/Spinner";
@@ -12,15 +12,25 @@ export default function SignUp() {
   const [isLoading, setIsLoading] = useState(false);
 
   const history = useHistory();
+
+  const inputRef = useRef(null);
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    setShowmsg(null);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newUser = { name, email, password };
     setIsLoading(true);
     try {
       const res = await myApi.post("/users/signup", newUser);
-      setName("");
-      setEmail("");
-      setPasword("");
       setIsLoading(false);
       history.push("/signin");
     } catch (error) {
@@ -43,13 +53,14 @@ export default function SignUp() {
             placeholder="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            ref={inputRef}
           />
           <input
             className="signup-form--input"
             type="text"
             placeholder="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleEmailChange}
           />
           <input
             className="signup-form--input"
@@ -66,13 +77,17 @@ export default function SignUp() {
           >
             Sign up
           </button>
-          <div></div>
-          {showmsg && <div className="err-email">{showmsg}</div>}
+          {showmsg && (
+            <div className="err-email">
+              <i className="far fa-times-circle"></i>
+              {showmsg}
+            </div>
+          )}
           {isLoading && <Spinner />}
         </form>
-        <h5>
-          <Link to="/signin">Already have an account?</Link>
-        </h5>
+        <Link to="/signin" className="signup-linkto-signin">
+          Already have an account?
+        </Link>
       </div>
     </div>
   );

@@ -26,6 +26,19 @@
   border: 1px solid #dbdbdb;
 }
 
+.signin-user-logo {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: salmon;
+}
+
+.fa-user {
+  font-size: 3rem;
+  color: white;
+  margin-top: 0.7rem;
+}
+
 .signin-form--input {
   margin-top: 1rem;
   padding: 0.7rem 1rem;
@@ -35,6 +48,6 @@
   width: 100%;
 }
 button:disabled {
-  background: #b2dffc;
+  background: #edbdbd;
   cursor: not-allowed;
 }

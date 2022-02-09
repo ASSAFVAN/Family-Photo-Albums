@@ -15,7 +15,8 @@
 }
 
 .signup-title {
-  color: #8e8e8e;
+  font-weight: 300;
+  font-size: 1.8rem;
   text-align: center;
 }
 
@@ -40,12 +41,12 @@
   width: 100%;
 }
 button:disabled {
-  background: #b2dffc;
+  background: #edbdbd;
   cursor: not-allowed;
 }
 
 .submit-user-btn {
-  background-color: #0195f6;
+  background-color: var(--primary-color);
   color: white;
   font-size: 1.2rem;
   font-weight: bold;
@@ -55,4 +56,21 @@ button:disabled {
   border: none;
   border-radius: 0.3rem;
   width: 100%;
+}
+
+.err-email {
+  margin-top: 1rem;
+  color: red;
+  font-weight: 700;
+}
+
+.signup-linkto-signin {
+  font-size: 1.2rem;
+}
+
+a {
+  margin-top: 1rem;
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: 700;
 }
