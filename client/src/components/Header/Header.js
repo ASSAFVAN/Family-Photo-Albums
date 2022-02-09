@@ -12,6 +12,8 @@ export default function Header() {
         <Link to="/">HomePage</Link>
         <Link to="/signup">signup</Link>
         <Link to="/signin">signin</Link>
+      </div>
+      <div className="navbar--right">
         <Link to="/signout">signout</Link>
       </div>
     </nav>
