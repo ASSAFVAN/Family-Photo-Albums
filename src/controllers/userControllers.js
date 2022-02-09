@@ -17,13 +17,16 @@ const signUp = async (req, res) => {
   try {
     const oldUser = await userModel.findOne({ email });
     if (oldUser) {
-      return res.status(409).send("User Already Exist. Please signIn");
+      return res
+        .status(409)
+        .send({ error: "User Already Exists. Please signIn" });
     }
-    const token = await newUser.generateAuthToken();
+    // const token = await newUser.generateAuthToken();
     await newUser.save();
-    res.status(201).send({ newUser, token });
+    // res.status(201).send({ newUser, token });
+    res.status(201).send({ newUser });
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send(error.message);
   }
 };
 
@@ -33,15 +36,15 @@ const signIn = async (req, res) => {
   try {
     const user = await userModel.findByCredentials(email, password);
     const token = await user.generateAuthToken();
-    // res.status(200).send({ user, token });
-    res.status(200).send("signed in successfuly");
+    res.status(200).send({ user, token });
+    // res.status(200).send("signed in successfuly");
   } catch (error) {
     res.status(400).send({ error: "Invalid Credentials" });
   }
 };
 
 // logout user
-const logout = async (req, res) => {
+const signOut = async (req, res) => {
   try {
     req.user.tokens = req.user.tokens.filter((token) => {
       return token.token !== req.token;
@@ -70,7 +73,7 @@ const getUser = async (req, res) => {
 module.exports = {
   signUp,
   signIn,
-  logout,
+  signOut,
   getUser,
   getAllUsers,
 };
