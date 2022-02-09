@@ -13,11 +13,14 @@ const albumSchema = new mongoose.Schema({
     trim: true,
     lowercase: true,
   },
+  thumbnail: {
+    type: String,
+  },
   dateCreated: {
     type: Date,
     default: new Date(),
   },
-  private: {
+  privateAlbum: {
     type: Boolean,
     default: false,
   },
@@ -25,6 +28,21 @@ const albumSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: false,
     ref: "User",
+  },
+  // images: [
+  //   {
+  //     src: {
+  //       type: String,
+  //       required: true
+  //     },
+  //     favorite: {
+  //       type: Boolean,
+  //       default: false
+  //     }
+  //   }
+  // ]
+  images: {
+    type: Array,
   },
 });
 
