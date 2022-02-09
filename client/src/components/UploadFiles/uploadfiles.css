@@ -1,0 +1,55 @@
+.uploadfile-container {
+  padding: 2rem 2.5rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 45rem;
+}
+
+.uploadfile-input {
+  font-size: 1.2rem;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px black;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+    0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+    0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+  width: 500px;
+  outline: none;
+  cursor: pointer;
+}
+
+::-webkit-file-upload-button {
+  color: #fff;
+  font-weight: bold;
+  background-color: var(--primary-color);
+  padding: 0.8rem 1rem 0.8rem 1rem;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.uploadfile-btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.uploadfile-btn {
+  background-color: var(--primary-color);
+  padding: 0.7rem 1rem 0.7rem 1rem;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07),
+    0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07),
+    0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+  cursor: pointer;
+}
+
+.uploadfile-btn:disabled {
+  background-color: #edbdbd;
+}
