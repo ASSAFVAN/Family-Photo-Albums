@@ -86,7 +86,6 @@ const deleteImage = async (req, res) => {
   const imageIndex = req.params.index;
   try {
     const album = await albumModel.findOne({ albumID, owner: req.user._id });
-    // console.log(album);
     if (!album) {
       return res.status(401).send("Only album's owner can delete images");
     }
@@ -108,6 +107,27 @@ const deleteImage = async (req, res) => {
   }
 };
 
+const changePrivateStatus = async (req, res) => {
+  const albumID = req.params.id;
+  try {
+    const album = await albumModel.findOne({ albumID, owner: req.user._id });
+    if (!album) {
+      return res.status(401).send("Only album's owner can change album status");
+    }
+    let privateStatus = album.privateAlbum;
+    if (privateStatus) {
+      privateStatus = false;
+    } else {
+      privateStatus = true;
+    }
+    album.privateAlbum = privateStatus;
+    album.save();
+    res.status(200).send(album);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
 module.exports = {
   getAllAlbums,
   getAlbum,
@@ -115,4 +135,5 @@ module.exports = {
   createNewAlbum,
   uploadImages,
   deleteImage,
+  changePrivateStatus,
 };
