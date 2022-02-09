@@ -1,0 +1,82 @@
+.addnewalbum-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20vh;
+}
+
+.addnewalbum-header {
+  font-weight: 300;
+  font-size: 2rem;
+  color: #8e8e8e;
+}
+
+.addnewalbum-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  padding: 3vh 3vw;
+  padding-bottom: 10vh;
+  background-color: #ffffff;
+  border: 1px solid #dbdbdb;
+}
+
+.signup-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 20vh;
+}
+
+.signup-title {
+  color: #8e8e8e;
+  text-align: center;
+}
+
+.addnewalbum-form--input {
+  margin-top: 1rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid #dbdbdb;
+  border-radius: 0.3rem;
+  background-color: #fafafa;
+  width: 100%;
+}
+
+.input-description {
+  height: 5rem;
+}
+
+.addnewalbum-form--checkbox-wrap {
+  display: flex;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.addnewalbum-form--checkbox {
+  padding: 0.1rem 1rem;
+  width: 10%;
+  height: 1rem;
+}
+
+button:disabled {
+  background: #edbdbd;
+  cursor: not-allowed;
+}
+
+.submit-user-btn {
+  background-color: lightcoral;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  padding: 0.5rem 0 0.5rem 0;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.3rem;
+  width: 100%;
+}
