@@ -1,4 +1,4 @@
-/* .navbar {
+.navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,22 +8,26 @@
   top: 0;
   left: 0;
   z-index: 5;
-} */
-/* 
+}
+
 .navbar--left {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.navbar a {
+.navbar a,
+.navbar--right {
   color: white;
   padding: 1rem;
   margin: 0 0.5rem;
   text-decoration: none;
   font-size: 1.5rem;
-} */
+  font-weight: 700;
+  cursor: pointer;
+}
 
-/* .navbar a:hover {
+.navbar a:hover,
+.navbar--right:hover {
   color: var(--primary-color);
-} */
+}
