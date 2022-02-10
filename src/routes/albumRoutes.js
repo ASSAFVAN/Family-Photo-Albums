@@ -19,6 +19,6 @@ router.get("/albums", auth, getAlbumsBySignIn);
 router.get("/albums/:id", getAlbum);
 router.delete("/albums/:id/:index", auth, deleteImage);
 router.put("/albums/:id", auth, changePrivateStatus);
-router.post("/albums/:id", upload.array("images", 3), uploadImages);
+router.post("/albums/:id", upload.array("images", 10), uploadImages);
 
 module.exports = router;

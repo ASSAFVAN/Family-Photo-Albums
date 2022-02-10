@@ -2,16 +2,19 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import AlbumCard from "../AlbumCard/AlbumCard";
 import myApi from "../../API/Api";
+import Spinner from "../Utils/Spinner/Spinner";
 import "./AlbumsList.css";
 
 export default function AlbumsList() {
   const [albumsList, setAlbumsList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const tokenString = localStorage.getItem("token");
   const token = JSON.parse(tokenString);
 
   useEffect(() => {
     const getUsers = async () => {
+      setIsLoading(true);
       try {
         const auth = `Bearer ${token}`;
         const { data } = await myApi.get("/albums", {
@@ -19,7 +22,9 @@ export default function AlbumsList() {
         });
         console.log(data);
         setAlbumsList(data);
+        setIsLoading(false);
       } catch (error) {
+        setIsLoading(false);
         console.log(error);
         setAlbumsList([]);
       }
@@ -47,6 +52,7 @@ export default function AlbumsList() {
           Create new album
         </Link>
       </div>
+      {isLoading && <Spinner />}
       <div className="albums-list">{displayAlbumCards()}</div>
     </div>
   );

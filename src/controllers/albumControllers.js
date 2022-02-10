@@ -82,13 +82,19 @@ const uploadImages = async (req, res) => {
 
 // Delete specific image from an album
 const deleteImage = async (req, res) => {
-  const albumID = req.params.id;
+  // const albumID = req.params.id;
   const imageIndex = req.params.index;
+  // console.log(albumID);
+
   try {
-    const album = await albumModel.findOne({ albumID, owner: req.user._id });
+    const album = await albumModel.findOne({
+      _id: req.params.id,
+      owner: req.user._id,
+    });
     if (!album) {
       return res.status(401).send("Only album's owner can delete images");
     }
+
     const imageToDelete = album.images[imageIndex];
 
     const updatedImages = album.images.filter((image) => {
@@ -110,16 +116,15 @@ const deleteImage = async (req, res) => {
 const changePrivateStatus = async (req, res) => {
   const albumID = req.params.id;
   try {
-    const album = await albumModel.findOne({ albumID, owner: req.user._id });
+    const album = await albumModel.findOne({
+      _id: albumID,
+      owner: req.user._id,
+    });
     if (!album) {
       return res.status(401).send("Only album's owner can change album status");
     }
     let privateStatus = album.privateAlbum;
-    if (privateStatus) {
-      privateStatus = false;
-    } else {
-      privateStatus = true;
-    }
+    privateStatus = !privateStatus;
     album.privateAlbum = privateStatus;
     album.save();
     res.status(200).send(album);
