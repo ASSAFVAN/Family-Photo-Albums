@@ -25,21 +25,20 @@ function App() {
     const tokenString = localStorage.getItem("token");
     const userToken = JSON.parse(tokenString);
     setToken(userToken);
-    // history.push("/albumslist");
   }, [token]);
-
-  if (!token) {
-    return <SignIn setToken={setToken} />;
-  }
 
   return (
     <div>
       <BrowserRouter>
-        <Header />
+        <Header setToken={setToken} />
         <Switch>
           <Route path="/" exact component={Homepage} />
-          <Route path="/signup" exact component={SignUp} />
-          <Route path="/signin" exact component={SignIn} />
+          <Route path="/signup" exact>
+            <SignUp setToken={setToken} />
+          </Route>
+          <Route path="/signin" exact>
+            <SignIn setToken={setToken} />
+          </Route>
           <Route path="/signout" exact component={SignOut} />
           <Route path="/albumslist" exact component={AlbumsList} />
           <Route path="/showalbum/:id" exact component={ShowAlbum} />

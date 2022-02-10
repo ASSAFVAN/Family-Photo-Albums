@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import myApi from "../../API/Api";
 import Spinner from "../Utils/Spinner/Spinner";
 import "./signin.css";
 
-export default function SignIn({ setToken }) {
+export default function SignIn(props) {
   const [email, setEmail] = useState("");
   const [password, setPasword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showmsg, setShowmsg] = useState(null);
 
   const history = useHistory();
+  // const handleClick = () => {
+  //   window.location.href = "/signup";
+  //   history.push("/signup");
+  // };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -29,13 +33,13 @@ export default function SignIn({ setToken }) {
     try {
       const res = await myApi.post("/users/signin", currentUser);
       console.log(res);
-      setToken(res.data.token);
+      props.setToken(res.data.token);
       setIsLoading(false);
-      history.push("/albumslist");
+      window.location.href = "/albumslist";
     } catch (error) {
       setIsLoading(false);
-      setShowmsg(error.response.data.error);
-      console.log(error.response.data.error);
+      console.table(error);
+      setShowmsg(error.response.data);
     }
   };
 
@@ -76,6 +80,13 @@ export default function SignIn({ setToken }) {
           )}
           {isLoading && <Spinner />}
         </form>
+        {/* <div onClick={handleClick} className="signup-linkto-signin">
+          {" "}
+          Don't have an account? Sign Up!
+        </div> */}
+        <Link to="/signup" className="signup-linkto-signin">
+          Don't have an account? Sign Up!
+        </Link>
       </div>
     </div>
   );

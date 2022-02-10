@@ -4,7 +4,7 @@ import myApi from "../../API/Api";
 import Spinner from "../Utils/Spinner/Spinner";
 import "./signup.css";
 
-export default function SignUp() {
+export default function SignUp(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPasword] = useState("");
@@ -32,11 +32,12 @@ export default function SignUp() {
     try {
       const res = await myApi.post("/users/signup", newUser);
       setIsLoading(false);
-      history.push("/signin");
+      props.setToken(res.data.token);
+      history.push("/albumslist");
     } catch (error) {
       setIsLoading(false);
-      setShowmsg(error.response.data.error);
-      console.log(error.response.data.error);
+      setShowmsg(error);
+      console.log(error);
     }
   };
 

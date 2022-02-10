@@ -16,6 +16,7 @@ const signUp = async (req, res) => {
   const newUser = await new userModel(req.body);
   try {
     const oldUser = await userModel.findOne({ email });
+    const token = await newUser.generateAuthToken();
     if (oldUser) {
       return res
         .status(409)
@@ -24,7 +25,7 @@ const signUp = async (req, res) => {
     // const token = await newUser.generateAuthToken();
     await newUser.save();
     // res.status(201).send({ newUser, token });
-    res.status(201).send({ newUser });
+    res.status(201).send({ newUser, token });
   } catch (error) {
     res.status(400).send(error.message);
   }
