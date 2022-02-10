@@ -1,6 +1,7 @@
 import React from "react";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
+import "./confirmdelete.css";
 
 export default function ConfirmDeleteImage(props) {
   console.log(props);
@@ -26,7 +27,9 @@ export default function ConfirmDeleteImage(props) {
 
   return (
     <div className="container">
-      <button onClick={submit}>Delete Image</button>
+      <div className="delete-img-btn" onClick={submit}>
+        Delete Image
+      </div>
     </div>
   );
 }

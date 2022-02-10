@@ -13,6 +13,8 @@ export default function AlbumImage(props) {
 
   const albumID = props.location.state.albumID;
   const imageID = props.location.state.imageID;
+  console.log("imageid", imageID);
+
   useEffect(() => {
     const loadAlbumImages = async () => {
       // setIsLoading(true);
