@@ -22,7 +22,7 @@
   width: 25%;
   padding: 3vh 3vw;
   padding-bottom: 10vh;
-  background-color: #ffffff;
+  background-color: white;
   border: 1px solid #dbdbdb;
 }
 
@@ -37,6 +37,7 @@
   font-size: 3rem;
   color: white;
   margin-top: 0.7rem;
+  background-color: salmon;
 }
 
 .signin-form--input {
@@ -44,7 +45,7 @@
   padding: 0.7rem 1rem;
   border: 1px solid #dbdbdb;
   border-radius: 0.3rem;
-  background-color: #fafafa;
+  background-color: #fff;
   width: 100%;
 }
 button:disabled {

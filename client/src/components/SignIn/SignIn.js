@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import myApi from "../../API/Api";
 import Spinner from "../Utils/Spinner/Spinner";
@@ -9,12 +9,23 @@ export default function SignIn(props) {
   const [password, setPasword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showmsg, setShowmsg] = useState(null);
+  const [loggedUser, setLoggedUser] = useState({});
 
   const history = useHistory();
-  // const handleClick = () => {
-  //   window.location.href = "/signup";
-  //   history.push("/signup");
-  // };
+
+  useEffect(() => {
+    if (loggedUser?.name) {
+      localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+    }
+    const userString = localStorage.getItem("loggedUser");
+    if (userString !== JSON.stringify(loggedUser) || !loggedUser.name) {
+      const userObj = JSON.parse(userString);
+      setLoggedUser(userObj);
+    }
+  }, [loggedUser]);
+
+  // const userString = localStorage.getItem("loggedUser");
+  // const userObj = JSON.parse(userString);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -34,6 +45,10 @@ export default function SignIn(props) {
       const res = await myApi.post("/users/signin", currentUser);
       console.log(res);
       props.setToken(res.data.token);
+      const usr = res.data.user;
+      console.log("usr", usr);
+
+      setLoggedUser(usr);
       setIsLoading(false);
       window.location.href = "/albumslist";
     } catch (error) {

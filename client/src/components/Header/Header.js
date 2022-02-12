@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import myApi from "../../API/Api";
 import "./style.css";
 
 export default function Header(props) {
+  const userString = localStorage.getItem("loggedUser");
+  const userObj = JSON.parse(userString);
   const history = useHistory();
+
+  // console.log(userString, userObj);
+
+  // const [isLogged, setIsLogged] = useState(false);
+
+  // useEffect(() => {
+  //   const isLoggedIn = async () => {
+  //     if (userString) {
+  //       setIsLogged(true);
+  //       console.log(isLogged);
+  //     }
+  //   };
+  //   isLoggedIn();
+  // }, []);
+
   const handleLogOut = async () => {
     const token = localStorage.getItem("token");
     const userToken = JSON.parse(token);
@@ -18,6 +35,7 @@ export default function Header(props) {
       );
       localStorage.clear();
       props.setToken(null);
+      // setIsLogged(false);
       history.push("/signin");
     } catch (error) {
       console.log(error);
@@ -28,13 +46,20 @@ export default function Header(props) {
     <nav className="navbar">
       <div className="navbar--left">
         <Link to="/">HomePage</Link>
-        <Link to="/albumslist">Albums</Link>
-        <Link to="/signup">Signup</Link>
-        <Link to="/signin">Signin</Link>
+        {userObj?.name && <Link to="/albumslist">Albums</Link>}
+        {userObj?.name && <Link to="/favorites">Favorites</Link>}
       </div>
-      <div className="navbar--right" onClick={handleLogOut}>
-        Signout
-      </div>
+      {userObj?.name && (
+        // <div className="navbar--right" onClick={handleLogOut}>
+        //   Signout
+        // </div>
+        <div className="navbar--right">
+          <div className="navbar-username">{`Hello, ${userObj.name}`}</div>
+          <div className="navbar-signout" onClick={handleLogOut}>
+            Signout
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

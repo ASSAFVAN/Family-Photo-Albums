@@ -9,6 +9,7 @@ export default function SignUp(props) {
   const [email, setEmail] = useState("");
   const [password, setPasword] = useState("");
   const [showmsg, setShowmsg] = useState(null);
+  const [loggedUser, setLoggedUser] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const history = useHistory();
@@ -19,6 +20,17 @@ export default function SignUp(props) {
       inputRef.current.focus();
     }
   }, []);
+
+  useEffect(() => {
+    if (loggedUser?.name) {
+      localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+    }
+    const userString = localStorage.getItem("loggedUser");
+    if (userString !== JSON.stringify(loggedUser) || !loggedUser.name) {
+      const userObj = JSON.parse(userString);
+      setLoggedUser(userObj);
+    }
+  }, [loggedUser]);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -33,6 +45,7 @@ export default function SignUp(props) {
       const res = await myApi.post("/users/signup", newUser);
       setIsLoading(false);
       props.setToken(res.data.token);
+      setLoggedUser(newUser);
       history.push("/albumslist");
     } catch (error) {
       setIsLoading(false);
@@ -45,9 +58,7 @@ export default function SignUp(props) {
     <div className="wrap">
       <div className="signup-container">
         <form className="signup-form">
-          <h3 className="signup-title">
-            Sign up to see photo albums from your family.
-          </h3>
+          <h3 className="signup-title">Sign up to and browse photo albums.</h3>
           <input
             className="signup-form--input"
             type="text"
