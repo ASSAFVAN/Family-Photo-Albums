@@ -11,3 +11,20 @@
   height: 60%;
   width: 60%;
 }
+
+.showimage-actions {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.fa-heart {
+  font-size: 3rem;
+  color: #d67c8c;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.fa-heart:hover {
+  color: crimson;
+}

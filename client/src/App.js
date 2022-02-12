@@ -11,6 +11,7 @@ import AlbumsList from "./components/AlbumsList/AlbumsList";
 import ShowAlbum from "./components/ShowAlbum/ShowAlbum";
 import AddNewAlbum from "./components/AddNewAlbum/AddNewAlbum";
 import AlbumImage from "./components/AlbumImage/AlbumImage";
+import Favorites from "./components/Favorites/Favorites";
 
 function App() {
   const [token, setToken] = useState(null);
@@ -19,7 +20,6 @@ function App() {
   useEffect(() => {
     if (token) {
       console.log(token);
-
       localStorage.setItem("token", JSON.stringify(token));
     }
     const tokenString = localStorage.getItem("token");
@@ -44,6 +44,7 @@ function App() {
           <Route path="/showalbum/:id" exact component={ShowAlbum} />
           <Route path="/albums/image" exact component={AlbumImage} />
           <Route path="/albums/addalbum" exact component={AddNewAlbum} />
+          <Route path="/favorites" exact component={Favorites} />
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>

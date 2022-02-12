@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Spinner from "../Utils/Spinner/Spinner";
 import myApi from "../../API/Api";
 
 import "./AddNewAlbum.css";
@@ -8,7 +9,8 @@ export default function AddNewAlbum() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [privateAlbum, setPrivateAlbum] = useState(false);
-  // const [albumOwner,setAlbumOwner]= useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const tokenString = localStorage.getItem("token");
   const token = JSON.parse(tokenString);
   const history = useHistory();
@@ -21,7 +23,7 @@ export default function AddNewAlbum() {
 
     const newAlbum = { name, description, privateAlbum };
 
-    // setIsLoading(true);
+    setIsLoading(true);
     try {
       const auth = `Bearer ${token}`;
       const res = await myApi.post("/albums/newalbum", newAlbum, {
@@ -31,7 +33,7 @@ export default function AddNewAlbum() {
 
       history.push(`/showalbum/${res.data.newAlbum._id}`);
     } catch (error) {
-      // setIsLoading(false);
+      setIsLoading(false);
       // setShowmsg(error.response.data.error);
       console.log(error.response);
     }
@@ -80,6 +82,7 @@ export default function AddNewAlbum() {
           Cancel
         </button>
       </form>
+      {isLoading && <Spinner />}
     </div>
   );
 }

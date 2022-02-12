@@ -27,9 +27,13 @@ export default function ConfirmDeleteImage(props) {
 
   return (
     <div className="container">
-      <div className="delete-img-btn" onClick={submit}>
+      <button
+        className="delete-img-btn"
+        onClick={submit}
+        disabled={!props.owner}
+      >
         Delete Image
-      </div>
+      </button>
     </div>
   );
 }
