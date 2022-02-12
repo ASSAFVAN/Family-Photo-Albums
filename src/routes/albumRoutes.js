@@ -13,8 +13,8 @@ const {
   changePrivateStatus,
 } = require("../controllers/albumControllers");
 
-router.post("/albums/newalbum", auth, createNewAlbum);
 // router.get("/albums", getAllAlbums);
+router.post("/albums/newalbum", auth, createNewAlbum);
 router.get("/albums", auth, getAlbumsBySignIn);
 router.get("/albums/:id", getAlbum);
 router.delete("/albums/:id/:index", auth, deleteImage);

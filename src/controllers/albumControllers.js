@@ -15,7 +15,7 @@ const getAllAlbums = async (req, res) => {
 const getAlbumsBySignIn = async (req, res) => {
   try {
     const albums = await albumModel.find({
-      $or: [{ owner: req.user._id }, { private: false }],
+      $or: [{ owner: req.user._id }, { privateAlbum: false }],
     });
     res.status(200).send(albums);
   } catch (error) {
@@ -94,9 +94,7 @@ const deleteImage = async (req, res) => {
     if (!album) {
       return res.status(401).send("Only album's owner can delete images");
     }
-
     const imageToDelete = album.images[imageIndex];
-
     const updatedImages = album.images.filter((image) => {
       return image !== imageToDelete;
     });

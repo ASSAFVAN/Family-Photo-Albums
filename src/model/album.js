@@ -31,13 +31,13 @@ const albumSchema = new mongoose.Schema({
   },
   // images: [
   //   {
-  //     src: {
+  //     lat: {
   //       type: String,
   //       required: true
   //     },
-  //     favorite: {
-  //       type: Boolean,
-  //       default: false
+  //     lng: {
+  //       type: string,
+  //       default: true
   //     }
   //   }
   // ]

@@ -34,6 +34,9 @@ const userSchema = new mongoose.Schema({
       }
     },
   },
+  favorites: {
+    type: Array,
+  },
   tokens: [
     {
       token: {
