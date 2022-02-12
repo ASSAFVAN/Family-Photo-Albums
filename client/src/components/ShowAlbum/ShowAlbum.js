@@ -47,8 +47,6 @@ export default function ShowAlbum(props) {
         headers: { Authorization: auth },
       }
     );
-    console.log(response.data.privateAlbum);
-
     setAlbumPrivate(!privateStatus);
   };
 
@@ -69,6 +67,7 @@ export default function ShowAlbum(props) {
                 state: {
                   imageID: index,
                   albumID: albumID,
+                  imageName: image,
                 },
               }}
               className="image"
