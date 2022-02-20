@@ -44,15 +44,11 @@ export default function AlbumsList() {
   return (
     <div className="albums-list-wrap">
       <div className="albums-list-top">
-        <div className="albums-list-searchbar">
-          <input type="text" />
-          <button>search</button>
-        </div>
         <Link className="addalbum-link" to="/albums/addalbum">
           Create new album
         </Link>
+        <div>{isLoading && <Spinner />}</div>
       </div>
-      {isLoading && <Spinner />}
       <div className="albums-list">{displayAlbumCards()}</div>
     </div>
   );

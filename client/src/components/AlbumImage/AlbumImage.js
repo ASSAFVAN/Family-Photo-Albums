@@ -17,7 +17,6 @@ export default function AlbumImage(props) {
   const [albumImage, setAlbumImage] = useState(null);
   const [isAlbumOwner, setIsAlbumOwner] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  // const [imageName, setImageName] = useState("");
 
   const albumID = props.location.state.albumID;
   const imageID = props.location.state.imageID;
@@ -45,7 +44,6 @@ export default function AlbumImage(props) {
   const handleAddToFavorites = async () => {
     const auth = `Bearer ${token}`;
     const imageName = props.location.state.imageName;
-    console.log(imageName);
     const response = await myApi.post(
       `/users/favorites/${userObj?._id}`,
       { imageName: imageName },

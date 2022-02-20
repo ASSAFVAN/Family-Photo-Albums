@@ -9,12 +9,15 @@ import "./showalbum.css";
 export default function ShowAlbum(props) {
   const tokenString = localStorage.getItem("token");
   const token = JSON.parse(tokenString);
+  const userString = localStorage.getItem("loggedUser");
+  const userObj = JSON.parse(userString);
   const auth = `Bearer ${token}`;
 
   const [albumImages, setAlbumImages] = useState([]);
   const [albumName, setAlbumName] = useState("");
   const [albumDescription, setAlbumDescription] = useState("");
   const [albumPrivate, setAlbumPrivate] = useState(false);
+  const [isAlbumOwner, setIsAlbumOwner] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const params = useParams();
@@ -30,6 +33,9 @@ export default function ShowAlbum(props) {
         setAlbumName(response.data.name);
         setAlbumDescription(response.data.description);
         setAlbumPrivate(response.data.privateAlbum);
+        if (response.data.owner === userObj?._id) {
+          setIsAlbumOwner(true);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -86,11 +92,13 @@ export default function ShowAlbum(props) {
         <div className="showalbum-top-left">
           <h2 className="name">{albumName}</h2>
           <p className="description">{albumDescription}</p>
-          <UploadFiles
-            id={albumID}
-            setAlbumImages={setAlbumImages}
-            albumImages={albumImages}
-          />
+          {isAlbumOwner && (
+            <UploadFiles
+              id={albumID}
+              setAlbumImages={setAlbumImages}
+              albumImages={albumImages}
+            />
+          )}
         </div>
         <div className="showalbum-lock" onClick={handlePrivateStatus}>
           {albumPrivate ? (

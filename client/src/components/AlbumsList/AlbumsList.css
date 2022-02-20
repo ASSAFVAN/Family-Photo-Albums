@@ -2,14 +2,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
   background-color: #fafafa;
-  margin: 0 3rem 0 3rem;
+  margin: 4rem 3rem 0 3rem;
 }
 
 .albums-list-top {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .albums-list {
@@ -18,4 +19,16 @@
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   grid-gap: 20px;
   align-items: stretch;
+}
+
+.addalbum-link {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.addalbum-link:hover {
+  background-color: #ed7676;
 }
