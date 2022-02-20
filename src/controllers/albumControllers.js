@@ -66,8 +66,10 @@ const uploadImages = async (req, res) => {
   try {
     const album = await albumModel.findById(albumID);
     const files = req.files;
+    console.log(files);
+
     files.map((image) => {
-      album.images.push(`/images/${image.filename}`);
+      album.images.push(`${image.path}`);
       // console.log(album);
     });
     album.save();
@@ -84,8 +86,6 @@ const uploadImages = async (req, res) => {
 const deleteImage = async (req, res) => {
   // const albumID = req.params.id;
   const imageIndex = req.params.index;
-  // console.log(albumID);
-
   try {
     const album = await albumModel.findOne({
       _id: req.params.id,
@@ -100,11 +100,23 @@ const deleteImage = async (req, res) => {
     });
     album.images = updatedImages;
     album.save();
+    res.status(200).send(album);
+  } catch (e) {
+    res.status(500).send();
+  }
+};
 
-    // const path = `.${imageToDelete}`;
-    // console.log(path);
-    // fs.unlinkSync(path);
-
+// Delete specific album
+const deleteAlbum = async (req, res) => {
+  try {
+    const album = await albumModel.findOneAndDelete({
+      _id: req.params.id,
+      owner: req.user._id,
+    });
+    if (!album) {
+      return res.status(404).send("album not found");
+    }
+    album.save();
     res.status(200).send(album);
   } catch (e) {
     res.status(500).send();
@@ -138,5 +150,6 @@ module.exports = {
   createNewAlbum,
   uploadImages,
   deleteImage,
+  deleteAlbum,
   changePrivateStatus,
 };
