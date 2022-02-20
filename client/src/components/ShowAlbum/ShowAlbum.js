@@ -21,9 +21,8 @@ export default function ShowAlbum(props) {
   const [isLoading, setIsLoading] = useState(false);
 
   const params = useParams();
-  console.log(params);
-
   const albumID = params.id;
+
   useEffect(() => {
     const loadAlbumImages = async () => {
       setIsLoading(true);

@@ -19,7 +19,6 @@ function App() {
 
   useEffect(() => {
     if (token) {
-      console.log(token);
       localStorage.setItem("token", JSON.stringify(token));
     }
     const tokenString = localStorage.getItem("token");
@@ -41,9 +40,9 @@ function App() {
           </Route>
           <Route path="/signout" exact component={SignOut} />
           <Route path="/albumslist" exact component={AlbumsList} />
-          <Route path="/showalbum/:id" exact component={ShowAlbum} />
           <Route path="/albums/image" exact component={AlbumImage} />
           <Route path="/albums/addalbum" exact component={AddNewAlbum} />
+          <Route path="/showalbum/:id" exact component={ShowAlbum} />
           <Route path="/favorites" exact component={Favorites} />
           <Route component={NotFound} />
         </Switch>

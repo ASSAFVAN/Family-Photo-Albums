@@ -20,7 +20,6 @@ export default function AlbumsList() {
         const { data } = await myApi.get("/albums", {
           headers: { Authorization: auth },
         });
-        console.log(data);
         setAlbumsList(data);
         setIsLoading(false);
       } catch (error) {
