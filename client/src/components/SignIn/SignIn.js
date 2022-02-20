@@ -53,8 +53,8 @@ export default function SignIn(props) {
       window.location.href = "/albumslist";
     } catch (error) {
       setIsLoading(false);
-      console.table(error);
-      setShowmsg(error.response.data);
+      console.log(error);
+      setShowmsg(error.response.data.error);
     }
   };
 
@@ -95,10 +95,6 @@ export default function SignIn(props) {
           )}
           {isLoading && <Spinner />}
         </form>
-        {/* <div onClick={handleClick} className="signup-linkto-signin">
-          {" "}
-          Don't have an account? Sign Up!
-        </div> */}
         <Link to="/signup" className="signup-linkto-signin">
           Don't have an account? Sign Up!
         </Link>

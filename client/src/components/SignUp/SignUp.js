@@ -43,14 +43,18 @@ export default function SignUp(props) {
     setIsLoading(true);
     try {
       const res = await myApi.post("/users/signup", newUser);
+      console.log(res, "res");
       setIsLoading(false);
       props.setToken(res.data.token);
-      setLoggedUser(newUser);
+
+      const usr = res.data.newUser;
+      setLoggedUser(usr);
       history.push("/albumslist");
+      window.location.reload();
     } catch (error) {
       setIsLoading(false);
-      setShowmsg(error);
-      console.log(error);
+      setShowmsg(error.response.data.error);
+      console.log(error.response.data.error);
     }
   };
 

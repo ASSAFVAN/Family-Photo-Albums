@@ -52,3 +52,11 @@ button:disabled {
   background: #edbdbd;
   cursor: not-allowed;
 }
+
+button:hover:enabled {
+  background-color: #ed7676;
+}
+
+.signup-linkto-signin:hover {
+  color: #ed7676;
+}
