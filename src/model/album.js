@@ -13,9 +13,6 @@ const albumSchema = new mongoose.Schema({
     trim: true,
     lowercase: true,
   },
-  thumbnail: {
-    type: String,
-  },
   dateCreated: {
     type: Date,
     default: new Date(),
@@ -29,18 +26,6 @@ const albumSchema = new mongoose.Schema({
     required: false,
     ref: "User",
   },
-  // images: [
-  //   {
-  //     lat: {
-  //       type: String,
-  //       required: true
-  //     },
-  //     lng: {
-  //       type: string,
-  //       default: true
-  //     }
-  //   }
-  // ]
   images: {
     type: Array,
   },
