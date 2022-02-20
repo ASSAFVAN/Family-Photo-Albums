@@ -1,5 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import myApi from "../../API/Api";
 import Spinner from "../Utils/Spinner/Spinner";
 

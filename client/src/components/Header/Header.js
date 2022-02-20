@@ -50,9 +50,6 @@ export default function Header(props) {
         {userObj?.name && <Link to="/favorites">Favorites</Link>}
       </div>
       {userObj?.name && (
-        // <div className="navbar--right" onClick={handleLogOut}>
-        //   Signout
-        // </div>
         <div className="navbar--right">
           <div className="navbar-username">{`Hello, ${userObj.name}`}</div>
           <div className="navbar-signout" onClick={handleLogOut}>
