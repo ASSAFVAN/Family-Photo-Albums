@@ -19,7 +19,7 @@ router.post("/users/signout", auth, signOut);
 router.get("/users/favorites/:id", auth, getUserFavorites);
 router.get("/users", getAllUsers);
 router.get("/users/:id", getUser);
-router.post("/users/favorites/:id", addToFavorites);
+router.post("/users/favorites/:id", auth, addToFavorites);
 router.delete("/users/favorites/:id/:imgid", auth, deleteFavImage);
 
 module.exports = router;
