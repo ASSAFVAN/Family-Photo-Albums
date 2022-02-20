@@ -11,3 +11,7 @@
   width: 100%;
   cursor: pointer;
 }
+
+.delete-img-btn:hover:enabled {
+  background-color: #ed7676;
+}
