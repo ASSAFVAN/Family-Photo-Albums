@@ -14,12 +14,18 @@
   margin-top: 20vh;
 }
 
+.signin-wrap {
+  min-width: 25vw;
+  width: 350px;
+  padding: 1rem;
+}
+
 .signin-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 25%;
+  min-width: 25%;
   padding: 3vh 3vw;
   padding-bottom: 10vh;
   background-color: white;

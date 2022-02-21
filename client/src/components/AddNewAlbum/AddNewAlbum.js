@@ -46,7 +46,7 @@ export default function AddNewAlbum() {
   return (
     <div className="addnewalbum-wrap">
       <form action="" className="addnewalbum-form">
-        <div className="addnewalbum-header">Create new album</div>
+        <div className="form-title">Create new album</div>
         <input
           className="addnewalbum-form--input"
           type="text"

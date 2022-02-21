@@ -12,6 +12,7 @@
 }
 .showalbum-top-left {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -19,10 +20,11 @@
 }
 
 .showalbum-lock {
-  display: flex;
-  margin-left: 60%;
+  /* display: flex; */
+  /* justify-content: flex-end; */
+  /* margin-left: 60%; */
   margin-top: 5rem;
-  margin-bottom: 13rem;
+  /* margin-bottom: 13rem; */
 }
 
 .fa-lock,
@@ -98,4 +100,14 @@
 .description {
   font-weight: 300;
   font-size: 2rem;
+}
+
+@media screen and (max-width: 600px) {
+  .showalbum-grid {
+    grid-auto-rows: 100px;
+    grid-gap: 0;
+  }
+  .album-item {
+    border: 1px solid black;
+  }
 }

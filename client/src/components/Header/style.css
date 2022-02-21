@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #333;
-  width: 100%;
+  width: 100vw;
   position: fixed;
   top: 0;
   left: 0;
@@ -19,7 +19,7 @@
 .navbar a,
 .navbar--right {
   color: white;
-  padding: 1rem;
+  padding: 0.5rem;
   margin: 0;
   text-decoration: none;
   font-size: 1.5rem;
@@ -43,6 +43,6 @@
 }
 
 .navbar a:hover,
-.navbar--right:hover {
+.navbar-signout:hover {
   color: var(--primary-color);
 }

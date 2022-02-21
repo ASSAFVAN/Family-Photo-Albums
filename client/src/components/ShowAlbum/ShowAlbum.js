@@ -87,6 +87,13 @@ export default function ShowAlbum(props) {
 
   return (
     <div className="showalbum-wrap">
+      <div className="showalbum-lock" onClick={handlePrivateStatus}>
+        {albumPrivate ? (
+          <i className="fas fa-lock"></i>
+        ) : (
+          <i className="fas fa-lock-open"></i>
+        )}
+      </div>
       <div className="showalbum-top">
         <div className="showalbum-top-left">
           <h2 className="name">{albumName}</h2>
@@ -97,13 +104,6 @@ export default function ShowAlbum(props) {
               setAlbumImages={setAlbumImages}
               albumImages={albumImages}
             />
-          )}
-        </div>
-        <div className="showalbum-lock" onClick={handlePrivateStatus}>
-          {albumPrivate ? (
-            <i className="fas fa-lock"></i>
-          ) : (
-            <i className="fas fa-lock-open"></i>
           )}
         </div>
       </div>
