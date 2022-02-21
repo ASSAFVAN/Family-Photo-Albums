@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import myApi from "../../API/Api";
 import Spinner from "../Utils/Spinner/Spinner";
@@ -12,6 +12,13 @@ export default function SignIn(props) {
   const [loggedUser, setLoggedUser] = useState({});
 
   const history = useHistory();
+
+  const inputRef = useRef(null);
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   useEffect(() => {
     if (loggedUser?.name) {
@@ -61,43 +68,46 @@ export default function SignIn(props) {
   return (
     <div className="wrap">
       <div className="signin-container">
-        <form className="signin-form">
-          <div className="signin-user-logo">
-            <i className="fas fa-user"></i>
-          </div>
-          <input
-            className="signin-form--input"
-            type="text"
-            placeholder="email"
-            value={email}
-            onChange={handleEmailChange}
-          />
-          <input
-            className="signin-form--input"
-            type="password"
-            placeholder="password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          <button
-            className="submit-user-btn"
-            type="submit"
-            disabled={password.length < 7 || !email}
-            onClick={handleSubmit}
-          >
-            Sign in
-          </button>
-          {showmsg && (
-            <div className="err-email">
-              <i className="far fa-times-circle"></i>
-              {showmsg}
+        <div className="signin-wrap">
+          <form className="signin-form">
+            <div className="signin-user-logo">
+              <i className="fas fa-user"></i>
             </div>
-          )}
-          {isLoading && <Spinner />}
-        </form>
-        <Link to="/signup" className="signup-linkto-signin">
-          Don't have an account? Sign Up!
-        </Link>
+            <input
+              className="signin-form--input"
+              type="text"
+              placeholder="email"
+              value={email}
+              onChange={handleEmailChange}
+              ref={inputRef}
+            />
+            <input
+              className="signin-form--input"
+              type="password"
+              placeholder="password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+            <button
+              className="submit-user-btn"
+              type="submit"
+              disabled={password.length < 7 || !email}
+              onClick={handleSubmit}
+            >
+              Sign in
+            </button>
+            {showmsg && (
+              <div className="err-email">
+                <i className="far fa-times-circle"></i>
+                {showmsg}
+              </div>
+            )}
+            {isLoading && <Spinner />}
+          </form>
+          <div className="signup-linkto-signin">
+            <Link to="/signup">Don't have an account? Sign Up!</Link>
+          </div>
+        </div>
       </div>
     </div>
   );
