@@ -20,9 +20,8 @@ export default function UploadFiles(props) {
       });
       const response = await myApi.post(`/albums/${albumID}`, data);
       props.setAlbumImages(response.data.images);
-      console.log(response, "response");
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
