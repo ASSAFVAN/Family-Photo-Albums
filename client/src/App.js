@@ -5,7 +5,6 @@ import Homepage from "./components/Homepage/Homepage";
 import Header from "./components/Header/Header";
 import SignUp from "./components/SignUp/SignUp";
 import SignIn from "./components/SignIn/SignIn";
-import SignOut from "./components/SignOut/SignOut";
 import NotFound from "./components/NotFound/NotFound";
 import AlbumsList from "./components/AlbumsList/AlbumsList";
 import ShowAlbum from "./components/ShowAlbum/ShowAlbum";
@@ -38,7 +37,6 @@ function App() {
           <Route path="/signin" exact>
             <SignIn setToken={setToken} />
           </Route>
-          <Route path="/signout" exact component={SignOut} />
           <Route path="/albumslist" exact component={AlbumsList} />
           <Route path="/albums/image" exact component={AlbumImage} />
           <Route path="/albums/addalbum" exact component={AddNewAlbum} />
