@@ -61,49 +61,51 @@ export default function SignUp(props) {
   return (
     <div className="wrap">
       <div className="signup-container">
-        <form className="signup-form">
-          <h3 className="signup-title">Sign up to and browse photo albums.</h3>
-          <input
-            className="signup-form--input"
-            type="text"
-            placeholder="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            ref={inputRef}
-          />
-          <input
-            className="signup-form--input"
-            type="text"
-            placeholder="email"
-            value={email}
-            onChange={handleEmailChange}
-          />
-          <input
-            className="signup-form--input"
-            type="password"
-            placeholder="password"
-            value={password}
-            onChange={(e) => setPasword(e.target.value)}
-          />
-          <button
-            className="submit-user-btn"
-            type="submit"
-            disabled={password.length < 7 || !name || !email}
-            onClick={handleSubmit}
-          >
-            Sign up
-          </button>
-          {showmsg && (
-            <div className="err-email">
-              <i className="far fa-times-circle"></i>
-              {showmsg}
-            </div>
-          )}
-          {isLoading && <Spinner />}
-        </form>
-        <Link to="/signin" className="signup-linkto-signin">
-          Already have an account?
-        </Link>
+        <div className="signup-wrap">
+          <form className="signup-form">
+            <h3 className="form-title">Sign up to and browse photo albums.</h3>
+            <input
+              className="signup-form--input"
+              type="text"
+              placeholder="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              ref={inputRef}
+            />
+            <input
+              className="signup-form--input"
+              type="text"
+              placeholder="email"
+              value={email}
+              onChange={handleEmailChange}
+            />
+            <input
+              className="signup-form--input"
+              type="password"
+              placeholder="password"
+              value={password}
+              onChange={(e) => setPasword(e.target.value)}
+            />
+            <button
+              className="submit-user-btn"
+              type="submit"
+              disabled={password.length < 7 || !name || !email}
+              onClick={handleSubmit}
+            >
+              Sign up
+            </button>
+            {showmsg && (
+              <div className="err-email">
+                <i className="far fa-times-circle"></i>
+                {showmsg}
+              </div>
+            )}
+            {isLoading && <Spinner />}
+          </form>
+          <div className="signup-linkto-signin">
+            <Link to="/signin">Already have an account?</Link>
+          </div>
+        </div>
       </div>
     </div>
   );
