@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useHistory, Link } from "react-router-dom";
 import myApi from "../../API/Api";
+import validator from "validator";
 import Spinner from "../Utils/Spinner/Spinner";
 import "./signup.css";
 
@@ -89,7 +90,11 @@ export default function SignUp(props) {
             <button
               className="submit-user-btn"
               type="submit"
-              disabled={password.length < 7 || !name || !email}
+              disabled={
+                password.length < 7 ||
+                name.length < 2 ||
+                !validator.isEmail(email)
+              }
               onClick={handleSubmit}
             >
               Sign up
