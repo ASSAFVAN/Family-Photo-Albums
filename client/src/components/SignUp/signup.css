@@ -14,11 +14,18 @@
   margin-top: 20vh;
 }
 
-.signup-title {
+.form-title {
   font-weight: 300;
   font-size: 1.8rem;
   text-align: center;
   background-color: #ffffff;
+  color: #8e8e8e;
+}
+
+.signup-wrap {
+  min-width: 25vw;
+  width: 350px;
+  padding: 1rem;
 }
 
 .signup-form {
@@ -26,7 +33,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 25%;
+  min-width: 25%;
   padding: 3vh 3vw;
   padding-bottom: 10vh;
   background-color: #ffffff;
@@ -63,10 +70,12 @@ button:disabled {
   margin-top: 1rem;
   color: red;
   font-weight: 700;
+  background-color: #ffffff;
 }
 
 .signup-linkto-signin {
   font-size: 1.2rem;
+  margin-top: 1rem;
 }
 
 a {
