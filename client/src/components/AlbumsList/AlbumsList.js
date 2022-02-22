@@ -7,6 +7,7 @@ import "./AlbumsList.css";
 
 export default function AlbumsList() {
   const [albumsList, setAlbumsList] = useState([]);
+  const [render, setRender] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const tokenString = localStorage.getItem("token");
@@ -35,9 +36,15 @@ export default function AlbumsList() {
   const displayAlbumCards = () => {
     return albumsList
       ? albumsList.map((item) => {
-          return <AlbumCard key={item._id} item={item} />;
+          return (
+            <AlbumCard key={item._id} item={item} handleRender={handleRender} />
+          );
         })
       : [];
+  };
+
+  const handleRender = () => {
+    setRender(!render);
   };
 
   return (

@@ -4,7 +4,7 @@ import myApi from "../../API/Api";
 import ConfirmDeleteAlbum from "../ConfirmDeleteAlbum/ConfirmDeleteAlbum";
 import "./albumcard.css";
 
-function AlbumCard({ item: { _id, name, description, owner } }) {
+function AlbumCard({ item: { _id, name, description, owner }, handleRender }) {
   const tokenString = localStorage.getItem("token");
   const userString = localStorage.getItem("loggedUser");
   const token = JSON.parse(tokenString);
@@ -34,6 +34,7 @@ function AlbumCard({ item: { _id, name, description, owner } }) {
       const response = await myApi.delete(`/albums/${_id}`, {
         headers: { Authorization: auth },
       });
+      handleRender();
     } catch (error) {
       console.log(error);
     }
