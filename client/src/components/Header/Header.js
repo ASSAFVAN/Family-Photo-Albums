@@ -8,20 +8,6 @@ export default function Header(props) {
   const userObj = JSON.parse(userString);
   const history = useHistory();
 
-  // console.log(userString, userObj);
-
-  // const [isLogged, setIsLogged] = useState(false);
-
-  // useEffect(() => {
-  //   const isLoggedIn = async () => {
-  //     if (userString) {
-  //       setIsLogged(true);
-  //       console.log(isLogged);
-  //     }
-  //   };
-  //   isLoggedIn();
-  // }, []);
-
   const handleLogOut = async () => {
     const token = localStorage.getItem("token");
     const userToken = JSON.parse(token);
