@@ -93,7 +93,8 @@ export default function SignUp(props) {
               disabled={
                 password.length < 7 ||
                 name.length < 2 ||
-                !validator.isEmail(email)
+                !validator.isEmail(email) ||
+                !validator.isAlpha(name)
               }
               onClick={handleSubmit}
             >
