@@ -21,7 +21,6 @@ export default function Header(props) {
       );
       localStorage.clear();
       props.setToken(null);
-      // setIsLogged(false);
       history.push("/signin");
     } catch (error) {
       console.log(error);
