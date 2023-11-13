@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import myApi from "../../API/Api";
 import Spinner from "../Utils/Spinner/Spinner";
+
 import "./signin.css";
 
 export default function SignIn(props) {
@@ -30,9 +31,6 @@ export default function SignIn(props) {
       setLoggedUser(userObj);
     }
   }, [loggedUser]);
-
-  // const userString = localStorage.getItem("loggedUser");
-  // const userObj = JSON.parse(userString);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
